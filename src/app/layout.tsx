@@ -1,6 +1,8 @@
 import Footer from '@/layouts/Footer';
 import Header from '@/layouts/Header';
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
 import './globals.css';
@@ -22,18 +24,23 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       suppressHydrationWarning
     >
       <body
         className={inter.className}
         suppressHydrationWarning
       >
-        <Header />
-        {children}
-        <Footer />
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

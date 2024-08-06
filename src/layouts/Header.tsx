@@ -1,15 +1,21 @@
 'use client';
 
-import Link from 'next/link';
+import Cookies from 'js-cookie';
+import { useTranslations } from 'next-intl';
 
 const Header = () => {
+  const t = useTranslations('HomePage');
+
+  const changeLanguage = (locale: string) => {
+    Cookies.set('locale', locale);
+    window.location.reload();
+  };
   return (
-    <Link
-      href="/"
-      locale="ru"
-    >
-      To /fr/another
-    </Link>
+    <div>
+      <button onClick={() => changeLanguage('en')}>English</button>
+      <button onClick={() => changeLanguage('uz')}>Uzbek</button>
+      <h1>{t('title')}</h1>
+    </div>
   );
 };
 
