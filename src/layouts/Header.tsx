@@ -1,5 +1,7 @@
 'use client';
 
+import { Search } from '@/components/Search';
+import { Container } from '@mui/material';
 import Cookies from 'js-cookie';
 import { useTranslations } from 'next-intl';
 
@@ -11,11 +13,17 @@ const Header = () => {
     window.location.reload();
   };
   return (
-    <div>
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('uz')}>Uzbek</button>
-      <h1>{t('title')}</h1>
-    </div>
+    <Container>
+      <header className="flex items-center justify-between">
+        <h1>Digital solution</h1>
+        <Search />
+        <div>
+          <button onClick={() => changeLanguage('en')}>English</button>
+          <button onClick={() => changeLanguage('uz')}>Uzbek</button>
+          <h1>{t('title')}</h1>
+        </div>
+      </header>
+    </Container>
   );
 };
 

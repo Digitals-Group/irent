@@ -1,5 +1,7 @@
 import Footer from '@/layouts/Footer';
 import Header from '@/layouts/Header';
+import Layout from '@/layouts/Layout';
+import { Container } from '@mui/material';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
@@ -38,7 +40,9 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <Header />
-          {children}
+          <Layout>
+            <Container>{children}</Container>
+          </Layout>
           <Footer />
         </NextIntlClientProvider>
       </body>
