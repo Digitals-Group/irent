@@ -2,24 +2,20 @@
 
 import { Search } from '@/components/Search';
 import { Container } from '@mui/material';
-import Cookies from 'js-cookie';
 import { useTranslations } from 'next-intl';
+import LanguageSelection  from '@/components/LanguageSelection/LanguageSelection'
 
 const Header = () => {
   const t = useTranslations('HomePage');
-
-  const changeLanguage = (locale: string) => {
-    Cookies.set('locale', locale);
-    window.location.reload();
-  };
   return (
     <Container>
       <header className="flex items-center justify-between">
-        <h1>Digital solution</h1>
-        <Search />
+        <div className='flex items-center justify-between w-full border border-red-500'>
+          <h1>iRent</h1>
+          <Search />
+        </div>
         <div>
-          <button onClick={() => changeLanguage('en')}>English</button>
-          <button onClick={() => changeLanguage('uz')}>Uzbek</button>
+          <LanguageSelection/>
           <h1>{t('title')}</h1>
         </div>
       </header>
