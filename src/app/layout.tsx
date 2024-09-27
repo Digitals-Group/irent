@@ -9,6 +9,11 @@ import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
 import './globals.css';
 
+import 'swiper/css';
+import 'swiper/css/bundle';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
